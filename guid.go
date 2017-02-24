@@ -1,11 +1,11 @@
-package ranstr
+package randstr
 
 import(
 	"crypto/rand"
 	"encoding/hex"
 )
 
-func GenerateRandomBytes(n int) ([]byte, error) {
+func RandomBytes(n int) ([]byte, error) {
 	b := make([]byte, n)
 	_, err := rand.Read(b)
 	if err != nil {
@@ -15,14 +15,13 @@ func GenerateRandomBytes(n int) ([]byte, error) {
 	return b, nil
 }
 
-func GenerateRandomString(s int) (string, error) {
-	b, err := GenerateRandomBytes(s)
+func RandomHex(s int) (string, error) {
+	b, err := RandomBytes(s)
 	if err != nil {
 		return "", err
 	}
 	
 	hexstring :=  hex.EncodeToString(b)
-
 	return hexstring, err
 }
 
