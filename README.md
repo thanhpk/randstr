@@ -4,7 +4,7 @@ Randstr is an Go library for generate random secure string
 
 ## Install
 ```
-	go get github.com/thanhpk/randstr
+  go get github.com/thanhpk/randstr
 ```
 
 ## Usage example
@@ -13,12 +13,13 @@ Randstr is an Go library for generate random secure string
   package main
   import(
     "github.com/thanhpk/randstr"
+    "fmt"
   )
   
   func main() {
     for i:=0; i< 10; i++ {
-      token, _ := ranstr.GenerateRandomString(16)
-      println(token)
+      token, _ := ranstr.RandomHex(16) // generate 128-bit hex string
+      fmt.Println(token)
     }
   }
   // output
