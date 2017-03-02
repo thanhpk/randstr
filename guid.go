@@ -33,7 +33,7 @@ func RandomHex(s int) (string, error) {
 func RandomString(s int) string {
 	// generate random string
 	mathrand.Seed(time.Now().UnixNano())
-	var letterRunes = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+	var letterRunes = []rune("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
 	b := make([]rune, 32)
 	for i := range b {
 		b[i] = letterRunes[mathrand.Intn(len(letterRunes))]
