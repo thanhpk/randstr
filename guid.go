@@ -6,27 +6,23 @@ import (
 	mathrand "math/rand"
 )
 
-func RandomBytes(n int) ([]byte, error) {
+func RandomBytes(n int) []byte {
 	b := make([]byte, n)
 	_, err := rand.Read(b)
 	if err != nil {
-		return nil, err
+		panic(err)
 	}
-
-	return b, nil
+	return b
 }
 
-func RandomHex(s int) (string, error) {
-	b, err := RandomBytes(s)
-	if err != nil {
-		return "", err
-	}
+func RandomHex(s int) string {
+	b := RandomBytes(s)
 	hexstring :=  hex.EncodeToString(b)
-	return hexstring, err
+	return hexstring
 }
 
 func RandomString(s int) string { // s number of character
-	randomFactor, _ := RandomBytes(1)
+	randomFactor := RandomBytes(1)
 	mathrand.Seed(time.Now().UnixNano() * int64(randomFactor[0]))
 	var letterRunes = []rune("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
 	b := make([]rune, s)
