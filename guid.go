@@ -31,3 +31,5 @@ func RandomString(s int) string { // s number of character
 	}
 	return string(b)
 }
+
+func init() {}
