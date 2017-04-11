@@ -1,10 +1,6 @@
-package randstr
-
+package main
 import (
 	"time"
-)
-
-import(
 	"crypto/rand"
 	"encoding/hex"
 	mathrand "math/rand"
@@ -25,16 +21,15 @@ func RandomHex(s int) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	
 	hexstring :=  hex.EncodeToString(b)
 	return hexstring, err
 }
 
-func RandomString(s int) string {
-	// generate random string
-	mathrand.Seed(time.Now().UnixNano())
+func RandomString(s int) string { // s number of character
+	randomFactor, _ := RandomBytes(1)
+	mathrand.Seed(time.Now().UnixNano() * int64(randomFactor[0]))
 	var letterRunes = []rune("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
-	b := make([]rune, 32)
+	b := make([]rune, s)
 	for i := range b {
 		b[i] = letterRunes[mathrand.Intn(len(letterRunes))]
 	}
