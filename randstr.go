@@ -1,4 +1,4 @@
-package main
+package randstr
 import (
 	"time"
 	"crypto/rand"
