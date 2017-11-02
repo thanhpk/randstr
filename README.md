@@ -10,7 +10,7 @@ Randstr is an Go library for generate secure random strings
 ## Usage
 ### Generate random hex string
 ```go
-token := randstr.RandomHex(16) // generate 128-bit hex string
+token := randstr.Hex(16) // generate 128-bit hex string
 ```
 Running example
 ```go
@@ -19,10 +19,10 @@ Running example
     "github.com/thanhpk/randstr"
     "fmt"
   )
-  
+
   func main() {
     for i := 0; i < 5; i++ {
-      token := ranstr.RandomHex(16) // generate 128-bit hex string
+      token := ranstr.Hex(16) // generate 128-bit hex string
       fmt.Println(token)
     }
   }
@@ -36,7 +36,7 @@ Running example
 
 ### Generate random ascii string
 ```go
-token := randstr.RandomString(16) // generate a random 16 character length string
+token := randstr.String(16) // generate a random 16 character length string
 ```
 Running example
 ```go
@@ -45,10 +45,10 @@ Running example
     "github.com/thanhpk/randstr"
     "fmt"
   )
-  
+
   func main() {
     for i := 0; i < 5; i++ {
-      token := ranstr.RandomString(16)
+      token := ranstr.String(16)
       fmt.Println(token)
     }
   }

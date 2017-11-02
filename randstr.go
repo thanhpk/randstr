@@ -7,7 +7,7 @@ import (
 	mathrand "math/rand"
 )
 
-func RandomBytes(n int) []byte {
+func Byte(n int) []byte {
 	b := make([]byte, n)
 	_, err := rand.Read(b)
 	if err != nil {
@@ -16,16 +16,31 @@ func RandomBytes(n int) []byte {
 	return b
 }
 
-func RandomHex(s int) string {
+func RandomBytes(n int) []byte {
+	return Byte(n)
+}
+
+func Base64(s int) string {
+	return String(s, "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/")
+}
+
+func Base62(s int) string {
+	return String(s)
+}
+
+func Hex(s int) string {
 	b := RandomBytes(s)
-	hexstring :=  hex.EncodeToString(b)
+	hexstring := hex.EncodeToString(b)
 	return hexstring
 }
 
-func RandomString(s int, letters ...string) string { // s number of character
+func RandomHex(s int) string {
+	return Hex(s)
+}
+
+func String(s int, letters ...string) string {
 	randomFactor := RandomBytes(1)
 	mathrand.Seed(time.Now().UnixNano() * int64(randomFactor[0]))
-
 	var letterRunes = []rune("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
 	if len(letters) > 0 {
 		letterRunes = []rune(letters[0])
@@ -37,4 +52,6 @@ func RandomString(s int, letters ...string) string { // s number of character
 	return string(b)
 }
 
-func init() {}
+func RandomString(s int, letters ...string) string { // s number of character
+	return String(s, letters...)
+}
