@@ -22,7 +22,7 @@ Running example
 
   func main() {
     for i := 0; i < 5; i++ {
-      token := ranstr.Hex(16) // generate 128-bit hex string
+      token := randstr.Hex(16) // generate 128-bit hex string
       fmt.Println(token)
     }
   }
@@ -48,7 +48,7 @@ Running example
 
   func main() {
     for i := 0; i < 5; i++ {
-      token := ranstr.String(16)
+      token := randstr.String(16)
       fmt.Println(token)
     }
   }
