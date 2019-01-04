@@ -1,3 +1,4 @@
+// Package randstr provides basic functions for generating random bytes, string
 package randstr
 
 import (
@@ -7,6 +8,7 @@ import (
 	"encoding/hex"
 )
 
+// Bytes generates n random bytes
 func Bytes(n int) []byte {
 	b := make([]byte, n)
 	_, err := rand.Read(b)
@@ -16,34 +18,39 @@ func Bytes(n int) []byte {
 	return b
 }
 
-func Base64(s int) string {
-	return String(s, "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/")
+// Base64 generates a random base64 string with length of n
+func Base64(n int) string {
+	return String(n, "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/")
 }
 
+// Base64 generates a random base62 string with length of n
 func Base62(s int) string {
-	return String(s)
+	return String(s, "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
 }
 
-func Hex(s int) string {
-	b := Bytes(s)
-	hexstring := hex.EncodeToString(b)
-	return hexstring
-}
+// Hex generates a random hex string with length of n
+// e.g: 67aab2d956bd7cc621af22cfb169cba8
+func Hex(n int) string { return hex.EncodeToString(Bytes(n)) }
 
-var defRunes = []rune("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+// list of default letters that can be used to make a random string when calling String
+// function with no letters provided
+var defLetters = []rune("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
 
-func String(s int, letters ...string) string {
+// String generates a random string using only letters provided in the letters parameter
+// if user ommit letters parameters, this function will use defLetters instead
+func String(n int, letters ...string) string {
 	var letterRunes []rune
 	if len(letters) == 0 {
-		letterRunes = defRunes
+		letterRunes = defLetters
 	} else {
 		letterRunes = []rune(letters[0])
 	}
 
 	var bb bytes.Buffer
-	bb.Grow(s)
+	bb.Grow(n)
 	l := uint32(len(letterRunes))
-	for i := 0; i < s; i++ {
+	// on each loop, generate one random rune and append to output
+	for i := 0; i < n; i++ {
 		bb.WriteRune(letterRunes[binary.BigEndian.Uint32(Bytes(4))%l])
 	}
 	return bb.String()
