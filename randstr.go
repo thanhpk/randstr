@@ -23,7 +23,7 @@ func Base64(n int) string {
 	return String(n, "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/")
 }
 
-// Base64 generates a random base62 string with length of n
+// Base62 generates a random base62 string with length of n
 func Base62(s int) string {
 	return String(s, "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
 }
