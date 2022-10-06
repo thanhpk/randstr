@@ -30,9 +30,9 @@ func ExampleString() {
 	// kDX1m81u14YwEiCY
 }
 
-func ExampleNumber() {
+func ExampleDec() {
 	for i := 0; i < 5; i++ {
-		token := Number(16)
+		token := Dec(16)
 		fmt.Println(token)
 	}
 	// Output:
