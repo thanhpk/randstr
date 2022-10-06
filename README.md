@@ -61,9 +61,9 @@ Running example
   // kDX1m81u14YwEiCY
 ```
 
-### Generate a random number string
+### Generate a random decimal number string
 ```go
-token := randstr.String(16) // generate a random 16 length string of number
+token := randstr.Dec(16) // generate a random 16 length string of decimal number
 ```
 Running example
 ```go
@@ -75,7 +75,7 @@ Running example
 
   func main() {
     for i := 0; i < 5; i++ {
-      token := randstr.Number(16)
+      token := randstr.Dec(16)
       fmt.Println(token)
     }
   }
