@@ -56,7 +56,7 @@ func String(n int, letters ...string) string {
 	return bb.String()
 }
 
-// Dec generates a random number string with length of n
+// Dec generates a random decimal number string with length of n
 func Dec(n int) string {
 	var bb bytes.Buffer
 	bb.Grow(n)
