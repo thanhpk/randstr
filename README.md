@@ -63,7 +63,7 @@ Running example
 
 ### Generate a random decimal number string
 ```go
-token := randstr.Dec(16) // generate a random 16 length string of number
+token := randstr.Dec(16) // generate a random 16 length string of decimal number
 ```
 Running example
 ```go
