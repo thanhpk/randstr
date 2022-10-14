@@ -5,7 +5,6 @@ import (
 	"bytes"
 	"crypto/rand"
 	"encoding/binary"
-	"encoding/hex"
 )
 
 // Bytes generates n random bytes
@@ -18,24 +17,23 @@ func Bytes(n int) []byte {
 	return b
 }
 
-// Base64 generates a random base64 string with length of n
-func Base64(n int) string {
-	return String(n, "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/")
-}
+const Base64Chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/"
+const Base62Chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+const HexChars = "0123456789abcdef"
+const DecChars = "0123456789"
 
-// Base62 generates a random base62 string with length of n
-func Base62(s int) string {
-	return String(s, "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
-}
+// Base64 generates a random base64 string with length of n
+func Base64(n int) string { return String(n, Base64Chars) }
+
+// Base64 generates a random base62 string with length of n
+func Base62(s int) string { return String(s, Base62Chars) }
 
 // Dec generates a random decimal number string with length of n
-func Dec(n int) string {
-	return String(n, "0123456789")
-}
+func Dec(n int) string { return String(n, DecChars) }
 
 // Hex generates a random hex string with length of n
 // e.g: 67aab2d956bd7cc621af22cfb169cba8
-func Hex(n int) string { return hex.EncodeToString(Bytes(n)) }
+func Hex(n int) string { return String(n, HexChars) }
 
 // list of default letters that can be used to make a random string when calling String
 // function with no letters provided
