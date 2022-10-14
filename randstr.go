@@ -28,6 +28,11 @@ func Base62(s int) string {
 	return String(s, "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
 }
 
+// Dec generates a random decimal number string with length of n
+func Dec(n int) string {
+	return String(n, "0123456789")
+}
+
 // Hex generates a random hex string with length of n
 // e.g: 67aab2d956bd7cc621af22cfb169cba8
 func Hex(n int) string { return hex.EncodeToString(Bytes(n)) }
@@ -52,18 +57,6 @@ func String(n int, letters ...string) string {
 	// on each loop, generate one random rune and append to output
 	for i := 0; i < n; i++ {
 		bb.WriteRune(letterRunes[binary.BigEndian.Uint32(Bytes(4))%l])
-	}
-	return bb.String()
-}
-
-// Dec generates a random decimal number string with length of n
-func Dec(n int) string {
-	var bb bytes.Buffer
-	bb.Grow(n)
-	l := uint32(10)
-	// on each loop, generate one random rune and append to output
-	for i := 0; i < n; i++ {
-		bb.WriteRune(defLetters[binary.BigEndian.Uint32(Bytes(4))%l])
 	}
 	return bb.String()
 }
