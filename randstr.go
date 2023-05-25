@@ -26,7 +26,7 @@ const DecChars = "0123456789"
 func Base64(n int) string { return String(n, Base64Chars) }
 
 // Base64 generates a random base62 string with length of n
-func Base62(s int) string { return String(s, Base62Chars) }
+func Base62(n int) string { return String(n, Base62Chars) }
 
 // Dec generates a random decimal number string with length of n
 func Dec(n int) string { return String(n, DecChars) }
