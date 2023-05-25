@@ -4,6 +4,32 @@ import (
 	"fmt"
 )
 
+func ExampleBase64() {
+	for i := 0; i < 5; i++ {
+		token := Base64(16)
+		fmt.Println(token)
+	}
+	// Output:
+	// jEivTuka++OZsN4w
+	// /sbBr4mBF/lgnh3e
+	// 0jhwQUFEUYw0Y8FG
+	// CIy0D4/diZmD8WW8
+	// 40zek8qIvfn26akN
+}
+
+func ExampleBase62() {
+	for i := 0; i < 5; i++ {
+		token := Base62(16)
+		fmt.Println(token)
+	}
+	// Output:
+	// DVosDCoMShcJ3G1X
+	// uxF6JGne4gI5M74K
+	// fed6PPJPApmrt5p4
+	// JwQ1QUMuNxPkKqgN
+	// DkiEUP32DqgBUwej
+}
+
 func ExampleHex() {
 	for i := 0; i < 5; i++ {
 		token := Hex(16)
