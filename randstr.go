@@ -44,11 +44,11 @@ func Hex(n int) string { return String(n, HexChars) }
 
 // list of default letters that can be used to make a random string when calling String
 // function with no letters provided
-var defLetters = []rune("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+var defLetters = []rune(Base62Chars)
 
 // String generates a random string using only letters provided in the letters parameter.
 //
-// If user omits letters parameter, this function will use defLetters instead.
+// If user omits letters parameter, this function will use Base62Chars instead.
 func String(n int, letters ...string) string {
 	var letterRunes []rune
 	if len(letters) == 0 {
